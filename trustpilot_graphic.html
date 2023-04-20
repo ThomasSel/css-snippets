@@ -84,6 +84,7 @@
       }
 
       .graphic-container {
+        --oscillation-time: 15s;
         position: relative;
         text-align: center;
         font-size: 0.8rem;
@@ -105,6 +106,7 @@
       }
 
       .bg-bubble {
+        --oscillation-length: 0.4rem;
         position: absolute;
         width: 100%;
         height: 100%;
@@ -113,11 +115,13 @@
       }
 
       .bg-bubble.yellow {
-        left: -0.5rem;
+        animation: yellow-bubble-oscillation var(--oscillation-time) ease-in-out
+          0s infinite alternate-reverse;
       }
 
       .bg-bubble.magenta {
-        left: 0.5rem;
+        animation: magenta-bubble-oscillation var(--oscillation-time)
+          ease-in-out 0s infinite alternate-reverse;
       }
 
       .arrow-container {
@@ -162,6 +166,26 @@
         border-top-width: 3px;
         border-left-width: 3px;
         border-color: var(--green);
+      }
+
+      @keyframes magenta-bubble-oscillation {
+        from {
+          margin-left: calc(-1 * var(--oscillation-length));
+        }
+
+        to {
+          margin-left: var(--oscillation-length);
+        }
+      }
+
+      @keyframes yellow-bubble-oscillation {
+        from {
+          margin-left: var(--oscillation-length);
+        }
+
+        to {
+          margin-left: calc(-1 * var(--oscillation-length));
+        }
       }
     </style>
   </body>
