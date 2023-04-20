@@ -88,7 +88,7 @@
         position: relative;
         text-align: center;
         font-size: 0.8rem;
-        margin: 2rem;
+        margin: 3rem;
       }
 
       .bubble {
@@ -106,7 +106,7 @@
       }
 
       .bg-bubble {
-        --oscillation-length: 0.4rem;
+        --oscillation-length: 0.35rem;
         position: absolute;
         width: 100%;
         height: 100%;
@@ -131,6 +131,8 @@
         left: -2rem;
         top: -2rem;
         z-index: -2;
+        animation: arrow-rotation calc(4 * var(--oscillation-time)) linear 0s
+          infinite normal;
       }
 
       .arrows {
@@ -161,11 +163,24 @@
       .arrow-head {
         position: absolute;
         box-sizing: border-box;
+        border-width: 3px 3px 0px 0px;
+        border-style: solid;
         width: 10px;
         height: 10px;
-        border-top-width: 3px;
-        border-left-width: 3px;
-        border-color: var(--green);
+      }
+
+      .arrow-head.red {
+        top: 40%;
+        left: -2.1px;
+        border-color: var(--red) var(--red) transparent transparent;
+        transform: rotate(139deg);
+      }
+
+      .arrow-head.green {
+        bottom: 41%;
+        right: -2.4px;
+        border-color: var(--green) var(--green) transparent transparent;
+        transform: rotate(-41deg);
       }
 
       @keyframes magenta-bubble-oscillation {
@@ -185,6 +200,15 @@
 
         to {
           margin-left: calc(-1 * var(--oscillation-length));
+        }
+      }
+
+      @keyframes arrow-rotation {
+        from {
+          transform: rotate(315deg);
+        }
+        to {
+          transform: rotate(-45deg);
         }
       }
     </style>
